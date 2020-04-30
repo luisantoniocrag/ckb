@@ -18,7 +18,12 @@ jobs:
       - template: devtools/azure/windows-dependencies.yml
         parameters:
           rustup_toolchain: '1.41.0-x86_64-pc-windows-msvc'
-      - script: make CKB_TEST_SEC_COEFFICIENT=5 CKB_TEST_ARGS="--max-time 1200 -c 1" integration-windows
+      - script:
+          - make CKB_TEST_SEC_COEFFICIENT=5 CKB_TEST_ARGS="--max-time 1200 -c 1 invalid_locator_size" integration-windows
+          - make CKB_TEST_SEC_COEFFICIENT=5 CKB_TEST_ARGS="--max-time 1200 -c 1 invalid_locator_size" integration-windows
+          - make CKB_TEST_SEC_COEFFICIENT=5 CKB_TEST_ARGS="--max-time 1200 -c 1 invalid_locator_size" integration-windows
+          - make CKB_TEST_SEC_COEFFICIENT=5 CKB_TEST_ARGS="--max-time 1200 -c 1 invalid_locator_size" integration-windows
+          - make CKB_TEST_SEC_COEFFICIENT=5 CKB_TEST_ARGS="--max-time 1200 -c 1 invalid_locator_size" integration-windows
         displayName: Run integration tests
         env:
           CI: true
